@@ -1,0 +1,16 @@
+{
+  "name": "keycloak-demo-angular",
+  "homepage": "https://github.com/mohitsuman/keycloak-demo-angular",
+  "authors": [
+    "Mohit Suman <msuman@redhat.com>"
+  ],
+  "description": "AngularJS UI for keycloak authentication for a REST service",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "^1.5.7",
+    "angular-patternfly": "^3.6.0",
+    "patternfly": "^3.6.0"
+  }
+}
