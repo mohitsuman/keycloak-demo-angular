@@ -9,3 +9,24 @@ To run the project with embedded Tomcat by maven:
     mvn spring-boot:run
 
 Then navigate to [http://localhost:8000](http://localhost:8000) to see the application in action.
+
+### Using Angular-PatternFly in the Application
+
+Note:
+
+1. Add Angular and Angular-PatternFly as a dependencies for the project
+
+        $ bower install angular --save
+        $ bower install angular-patternfly --save
+        $ bower install patternfly --save
+
+2. Add the following CSS include to your HTML file(s):
+
+        <!-- Angular-PatternFly Styles -->
+        <link rel="stylesheet" href="bower_components/angular-patternfly/dist/styles/angular-patternfly.min.css" />
+
+3. Add the following script includes to the HTML file(s):
+
+        <!-- Angular-PatternFly  -->
+        <script src="bower_components/angular-patternfly/dist/angular-patternfly.min.js"></script>
+
