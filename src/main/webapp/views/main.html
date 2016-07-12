@@ -1,0 +1,90 @@
+<nav class="navbar navbar-inverse navbar-pf" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      <img src="imgs/logo.png" alt="Red Hat Logo" style="height: 38px;"/>
+    </a>
+  </div>
+  <div class="collapse navbar-collapse navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-utility">
+      <li>
+        <a href="#">User Settings</a>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <span class="pficon pficon-user"></span>
+          {{profile.username}} <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="#/server-info" class="ng-binding">Server Info</a></li>
+          <li class="divider"></li>
+          <li><a href="" ng-click="logout()" class="ng-binding">Sign Out</a></li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-primary">
+      <li class="active">
+        <a href="#">Date of Creation: {{profile.createdTimestamp |  date : format : timezone}}</a>
+      </li>
+      <li>
+        <a href="#">Required Actions</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="alert alert-success alert-dismissable">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+    <span class="pficon pficon-close"></span>
+  </button>
+  <span class="pficon pficon-ok"></span>
+  <strong>Congratulations!</strong> You have successfully logged in.
+</div>
+
+<div class="list-group list-view-pf">
+  <div class="list-group-item">
+    <div class="list-view-pf-actions">
+     <button name="getContracts" ng-click="getContracts()" ng-disabled="!isManager" data-toggle="tooltip" data-placement="left" title="Visible to manager role user">Call Managers Service</button>
+   </div>
+       <div class="list-view-pf-actions">
+     <button name="getContracts" ng-click="getContracts()" ng-disabled="!isAdmin" data-toggle="tooltip" data-placement="left" title="Visible to admin role user">Call Admin service</button>
+   </div>
+   <div class="list-view-pf-main-info">
+    <div class="list-view-pf-left">
+      <span class="fa fa-linux list-view-pf-icon-sm"></span>
+    </div>
+    <div class="list-view-pf-body">
+      <div class="list-view-pf-description">
+        <div class="list-group-item-heading">
+          {{profile.username}}
+        </div>
+        <div class="list-group-item-text">
+          Id : {{profile.id}}
+        </div>
+      </div>
+      <div class="list-view-pf-additional-info">
+        <div class="list-view-pf-additional-info-item">
+          <span class="pficon pficon-screen"></span>
+          Email: {{profile.email}}
+        </div>
+        <div class="list-view-pf-additional-info-item">
+          <span class="pficon pficon-paper-plane"></span>
+          Full Name: {{profile.firstName}} {{profile.lastName}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="panel panel-default" ng-show="isManager">
+  <div class="panel-body">
+   <ul ng-repeat="contract in contracts">
+    <li>{{contract.name}}</li>
+  </ul>
+</div>
+</div>
+</div>

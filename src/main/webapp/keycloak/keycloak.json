@@ -1,0 +1,8 @@
+{
+  "realm": "demo",
+  "realm-public-key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAq7dvwMGlSH8RDxfqhjja2EzkEGC8y6HsSqXEwbNuBH3/iWo3YUGclOMOs6tyLFLPQr0ykFM2EKASEQjuHdkBU1SiCrxgsSqG+VaCzozXqJ/iMBSZ6jFA8bxjt0n/NQuiupwpmgEK4f4U9ltEI9JbqKvNUbIcvBcPixOgmdmIQquS0UM2eHC1Ri8Xk4wOADcWIoB6Bx0ZFsubFjnlAOXSSXmcByDNUXBcZS4QEvjhG1jAltU76CD6xB1gq65y4YIx5S+XOTBpSNaIjQzZ8L2HX4X5iKr/fT/JMHn3U0iJLdtUshWV+P/uSO7OrHtjxwFjqjLM0kYCf3fPtSm+CoDBZQIDAQAB",
+  "auth-server-url": "http://localhost:8180/auth",
+  "ssl-required": "external",
+  "resource": "angular-patternfly",
+  "public-client": true
+}
