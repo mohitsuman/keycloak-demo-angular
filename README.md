@@ -1,4 +1,6 @@
-# Download [Keyclock server] (http://www.keycloak.org/downloads.html)
+# Authentication with Keycloak for backend service using AngularJS, Patternfly UI
+
+## Download [Keyclock server] (http://www.keycloak.org/downloads.html)
 
 - Start up Keycloak by using one of the Standalone executeables in the /bin directory of Keycloak which will start Keycloak  immediately by using the bundled WildFly application server.
 
@@ -7,9 +9,6 @@
 
 After the startup, open up a browser and navigate to [http://localhost:8180](http://localhost:8180)
 
-# Authentication with Keycloak for backend service using AngularJS, Patternfly UI
-
-- Make sure to start Keycloak before using the application
 
 ## Run with standalone Tomcat
 
