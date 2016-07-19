@@ -13,6 +13,13 @@ For more information about Keycloak visit [Keycloak homepage](http://keycloak.or
 
 After the startup, open up a browser and navigate to [http://localhost:8180](http://localhost:8180)
 
+## Building
+
+Ensure you have JDK 8 (or newer), Maven 3.2.1 (or newer) and Git installed
+
+    java -version
+    mvn -version
+    git --version
 
 ## Run with standalone Tomcat
 
