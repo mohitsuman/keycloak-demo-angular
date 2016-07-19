@@ -2,7 +2,8 @@
 
 - Start up Keycloak by using one of the Standalone executeables in the /bin directory of Keycloak which will start Keycloak  immediately by using the bundled WildFly application server.
 
-    ./standalone.sh -Djboss.socket.binding.port-offset=100
+        ./standalone.sh -Djboss.socket.binding.port-offset=100
+
 
 After the startup, open up a browser and navigate to [http://localhost:8180](http://localhost:8180)
 
