@@ -1,6 +1,10 @@
 # Authentication with Keycloak for backend service using AngularJS, Patternfly UI
 
-## Download [Keyclock server] (http://www.keycloak.org/downloads.html)
+## Download Keyclock server 
+
+Open Source Identity and Access Management for modern Applications and Services.
+
+For more information about Keycloak visit [Keycloak homepage](http://keycloak.org) and [Keycloak Download](http://www.keycloak.org/downloads.html).
 
 - Start up Keycloak by using one of the Standalone executeables in the /bin directory of Keycloak which will start Keycloak  immediately by using the bundled WildFly application server.
 
