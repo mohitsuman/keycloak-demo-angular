@@ -1,11 +1,14 @@
 'use strict';
 
 var app = angular.module('keycloak-angular', [
-                                               'ngRoute',
-                                               'appControllers',
-                                               'patternfly'
-                                               ]);
-
+	'ngRoute',
+	'appControllers',
+	'patternfly'
+	]);
+var auth = {
+	logout : function() {
+	}
+};
 // configure routes
 app.config(['$routeProvider', function($routeProvider) {
 	$routeProvider.
@@ -18,55 +21,66 @@ app.config(['$routeProvider', function($routeProvider) {
 	});
 }]);
 
-// use bearer token when calling backend
-app.config(['$httpProvider', function($httpProvider) {
-	var isExpired = window._keycloak.isTokenExpired();
-	var token = window._keycloak.token;
-
-	if (isExpired) {
-		window._keycloak.updateToken(5)
-		.success(function() {
-			$httpProvider.defaults.headers.common['Authorization'] = 'BEARER ' + token;
-		})
-		.error(function() {
-			console.error('Failed to refresh token');
-		});
-	}
-
-	$httpProvider.defaults.headers.common['Authorization'] = 'BEARER ' + token;
-}]);
-
-// application startup hook
-app.run(['$rootScope', '$location', '$http', '$route',
-         function ($rootScope, $location, $http, usersService, $route) {
-
-}]);
-
 var appControllers = angular.module('appControllers', []);
 
-// provide keycloak as factory to make it injectable
-angular.module('keycloak-angular').factory('authorization', function ($window) {
-	return $window._keycloak;
-});
-
 // on every request, authenticate user first
-angular.element(document).ready(() => {
-	window._keycloak = Keycloak('keycloak/keycloak.json');
+angular.element(document).ready(function($http) {
+	var keycloakAuth = new Keycloak('keycloak/keycloak.json');
+	auth.loggedIn = false;
 
-	window._keycloak.init({
+	keycloakAuth.init({
 		onLoad: 'login-required'
 	})
-	.success((authenticated) => {
-		if(authenticated) {
-			window._keycloak.loadUserProfile().success(function(profile){
-				angular.bootstrap(document, ['keycloak-angular']); // manually bootstrap Angular
-			});
+	.success(function() {
+		auth.loggedIn = true;
+		auth.authz = keycloakAuth;
+		auth.logout = function() {
+			auth.loggedIn = false;
+			auth.authz = null;
+			auth.profile = {};
+			keycloakAuth.logout();
 		}
-		else {
-			window.location.reload();
-		}
+		app.factory('Auth', function() {
+			return auth;
+		});
+		keycloakAuth.loadUserProfile().success(function(profile) {
+			auth.profile = profile;
+		});
+		angular.bootstrap(document, [ 'keycloak-angular' ], {
+			strictDi : true
+		});
 	})
 	.error(function () {
 		window.location.reload();
 	});
 });
+
+app.config([ '$httpProvider', function($httpProvider) {
+	$httpProvider.interceptors.push([ '$q', 'Auth', function($q, Auth) {
+		return {
+			'request' : function(config) {
+				var deferred = $q.defer();
+				if (Auth.authz && Auth.authz.token) {
+					Auth.authz.updateToken(5).success(function() {
+						config.headers = config.headers || {};
+						config.headers.Authorization = 'Bearer ' + Auth.authz.token;
+
+						deferred.resolve(config);
+					}).error(function() {
+						deferred.reject('Failed to refresh token');
+					});
+				}
+				return deferred.promise;
+
+			},
+			'responseError' : function(response) {
+				if (response.status == 401) {
+					console.log('session timeout?');
+					auth.logout();
+				}
+				return $q.reject(response);
+
+			}
+		}
+	} ]);
+} ]);
