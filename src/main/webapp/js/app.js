@@ -9,17 +9,6 @@ var auth = {
 	logout : function() {
 	}
 };
-// configure routes
-app.config(['$routeProvider', function($routeProvider) {
-	$routeProvider.
-	when('/main', {
-		templateUrl: 'views/main.html',
-		controller: 'MainController'
-	}).
-	otherwise({
-		redirectTo: '/main'
-	});
-}]);
 
 var appControllers = angular.module('appControllers', []);
 
