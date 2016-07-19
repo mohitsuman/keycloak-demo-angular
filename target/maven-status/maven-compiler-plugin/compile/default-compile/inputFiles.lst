@@ -1,0 +1,7 @@
+/Users/msuman/demo/keycloak-demo-angular/src/main/java/redhat/msuman/keycloaktutorial/contract/web/ContractResource.java
+/Users/msuman/demo/keycloak-demo-angular/src/main/java/redhat/msuman/keycloaktutorial/security/web/config/WebConfig.java
+/Users/msuman/demo/keycloak-demo-angular/src/main/java/redhat/msuman/keycloaktutorial/KeyCloakTutorial.java
+/Users/msuman/demo/keycloak-demo-angular/src/main/java/redhat/msuman/keycloaktutorial/contract/domain/Contract.java
+/Users/msuman/demo/keycloak-demo-angular/src/main/java/redhat/msuman/keycloaktutorial/security/domain/UserDetails.java
+/Users/msuman/demo/keycloak-demo-angular/src/main/java/redhat/msuman/keycloaktutorial/security/web/resolver/UserDetailsArgumentResolver.java
+/Users/msuman/demo/keycloak-demo-angular/src/main/java/redhat/msuman/keycloaktutorial/security/domain/CurrentUser.java
