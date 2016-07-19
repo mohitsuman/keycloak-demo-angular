@@ -7,13 +7,13 @@
       <span class="icon-bar"></span>
     </button>
     <a class="navbar-brand" href="/">
-      <img src="imgs/logo.png" alt="Red Hat Logo" style="height: 38px;"/>
+      <img src="imgs/logo.png" alt="Red Hat Logo" style="height: 20px;"/>
     </a>
   </div>
   <div class="collapse navbar-collapse navbar-collapse-1">
     <ul class="nav navbar-nav navbar-utility">
       <li>
-        <a href="#">User Settings</a>
+        <a href="#"></a>
       </li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -21,18 +21,15 @@
           {{profile.username}} <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
-          <li><a href="#/server-info" class="ng-binding">Server Info</a></li>
+          <li><a href="#"><span class="pficon pficon-server"></span>&nbsp;Server Info</a></li>
           <li class="divider"></li>
-          <li><a href="" ng-click="logout()" class="ng-binding">Sign Out</a></li>
+          <li><a href="" ng-click="logout()"><span class="fa fa-sign-out"></span>&nbsp;Sign Out</a></li>
         </ul>
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-primary">
       <li class="active">
-        <a href="#">Date of Creation: {{profile.createdTimestamp |  date : format : timezone}}</a>
-      </li>
-      <li>
-        <a href="#">Required Actions</a>
+        <a href="#"><span>Date of Creation: {{profile.createdTimestamp |  date : format : timezone}}</span></a>
       </li>
     </ul>
   </div>
@@ -64,6 +61,7 @@
           {{profile.username}}
         </div>
         <div class="list-group-item-text">
+          <span class="pficon pficon-container-node"></span>
           Id : {{profile.id}}
         </div>
       </div>
@@ -73,7 +71,7 @@
           Email: {{profile.email}}
         </div>
         <div class="list-view-pf-additional-info-item">
-          <span class="pficon pficon-paper-plane"></span>
+          <span class="pficon pficon-user"></span>
           Full Name: {{profile.firstName}} {{profile.lastName}}
         </div>
       </div>
