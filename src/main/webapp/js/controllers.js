@@ -1,20 +1,21 @@
 'use strict';
 
-appControllers.controller('MainController', ['$rootScope', '$scope', '$http', 'Auth',
-    function($rootScope, $scope, $http, Auth) {
+appControllers.controller('MainController', ['$rootScope', '$scope', '$http', 'Auth', 'contract',
+    function($rootScope, $scope, $http, Auth, contract) {
         $scope.status = 'App is up and running';
         $scope.profile = auth.profile;
         $scope.isAdmin = Auth.authz.hasRealmRole('admin');
         $scope.isManager = Auth.authz.hasRealmRole('manager');
-
         $scope.getContracts = function() {
-        	$http.get("http://localhost:8000/api/contracts").success(function(data) {
-            	$scope.contracts = data;
-            });
+        	contract.getContracts().then(function(data) {
+             $scope.contracts = data;
+         }, function(err) {
+             Notifications.error("Error retrieving contracts: " + err.statusText);
+         });
         }
 
         $scope.logout = function() {
             Auth.authz.logout();
         }
     }
-]);
+    ]);
