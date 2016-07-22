@@ -31,8 +31,6 @@ Then navigate to [http://localhost:8000](http://localhost:8000) to see the appli
 
 ### Using Angular-PatternFly in the Application
 
-Note:
-
 1. Add Angular and Angular-PatternFly as a dependencies for the project
 
         $ bower install angular --save
