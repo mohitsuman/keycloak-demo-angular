@@ -1,88 +1,102 @@
-<nav class="navbar navbar-inverse navbar-pf" role="navigation">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-1">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="/">
-      <img src="imgs/logo.png" alt="Red Hat Logo" style="height: 20px;"/>
-    </a>
-  </div>
-  <div class="collapse navbar-collapse navbar-collapse-1">
-    <ul class="nav navbar-nav navbar-utility">
-      <li>
-        <a href="#"></a>
-      </li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <span class="pficon pficon-user"></span>
-          {{profile.username}} <b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu">
-          <li><a href="#"><span class="pficon pficon-server"></span>&nbsp;Server Info</a></li>
-          <li class="divider"></li>
-          <li><a href="" ng-click="logout()"><span class="fa fa-sign-out"></span>&nbsp;Sign Out</a></li>
+<div class="nav-pf-vertical nav-pf-vertical-with-secondary-nav">
+  <ul class="list-group">
+    <li class="list-group-item active">
+      <a href="#">
+        <span class="fa fa-dashboard"></span>
+        <span class="list-group-item-value">Dashboard</span>
+      </a>
+    </li>
+    <li class="list-group-item persistent-secondary" data-target="#admin-secondary">
+      <a href="#">
+        <span class="fa fa-cog"></span>
+        <span class="list-group-item-value">Account Info</span>
+      </a>
+      <div id="admin-secondary" class="nav-pf-persistent-secondary">
+        <div class="persistent-secondary-header">
+          <a class="secondary-collapse-toggle-pf" href="#" data-toggle="collapse-secondary-nav"></a>
+          <span>Account Info</span>
+        </div>
+        <h5>User Administration</h5>
+        <ul class="list-group">
+          <li class="list-group-item active">
+            <a href="#">
+              <span class="list-group-item-value">Users</span>
+              <div class="badge-container-pf">
+                <span class="badge">1</span>
+              </div>
+            </a>
+          </li>
+          <li class="list-group-item">
+            <a href="#">
+              <span class="list-group-item-value">Roles</span>
+              <div class="badge-container-pf">
+                <span class="badge">2</span>
+              </div>
+            </a>
+          </li>
         </ul>
-      </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-primary">
-      <li class="active">
-        <a href="#"><span>Date of Creation: {{profile.createdTimestamp |  date : format : timezone}}</span></a>
-      </li>
-    </ul>
-  </div>
-</nav>
-
-<div class="alert alert-success alert-dismissable">
-  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-    <span class="pficon pficon-close"></span>
-  </button>
-  <span class="pficon pficon-ok"></span>
-  <strong>Congratulations!</strong> You have successfully logged in.
-</div>
-
-<div class="list-group list-view-pf">
-  <div class="list-group-item">
-    <div class="list-view-pf-actions">
-     <button name="getContracts" ng-click="getContracts()" ng-disabled="!isManager" data-toggle="tooltip" data-placement="left" title="Visible to manager role user">Call Managers Service</button>
-   </div>
-       <div class="list-view-pf-actions">
-     <button name="getContracts" ng-click="getContracts()" ng-disabled="!isAdmin" data-toggle="tooltip" data-placement="left" title="Visible to admin role user">Call Admin service</button>
-   </div>
-   <div class="list-view-pf-main-info">
-    <div class="list-view-pf-left">
-      <span class="fa fa-linux list-view-pf-icon-sm"></span>
-    </div>
-    <div class="list-view-pf-body">
-      <div class="list-view-pf-description">
-        <div class="list-group-item-heading">
-          {{profile.username}}
-        </div>
-        <div class="list-group-item-text">
-          <span class="pficon pficon-container-node"></span>
-          Id : {{profile.id}}
-        </div>
       </div>
-      <div class="list-view-pf-additional-info">
-        <div class="list-view-pf-additional-info-item">
-          <span class="pficon pficon-screen"></span>
-          Email: {{profile.email}}
-        </div>
-        <div class="list-view-pf-additional-info-item">
-          <span class="pficon pficon-user"></span>
-          Full Name: {{profile.firstName}} {{profile.lastName}}
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="panel panel-default" ng-show="isManager">
-  <div class="panel-body">
-   <ul ng-repeat="contract in contracts">
-    <li>{{contract.name}}</li>
+    </li>
   </ul>
 </div>
+<div class="container container-cards-pf">
+  <div class="row row-cards-pf">
+    <!-- Important:  if you need to nest additional .row within a .row.row-cards-pf, do *not* use .row-cards-pf on the nested .row  -->
+    <div class="col-xs-12 col-sm-12">
+      <div class="card-pf" style="height: 364px;">
+        <div class="card-pf-heading">
+          <h2 class="card-pf-title" style="height: 17px;">
+            Client Information
+          </h2>
+        </div>
+        <div class="card-pf-body" style="height: 284px;">
+         <div class="row row-cards-pf">
+           <div class="list-group list-view-pf" style="margin-top: 20px;">
+           <div class="list-group-item" style="background: whitesmoke;">
+              <div class="list-view-pf-actions">
+               <button class="btn btn-primary" name="managerbtn" ng-click="getContracts()" ng-disabled="!isManager" data-toggle="tooltip" data-placement="left" title="Visible to manager role user">Call Managers Service</button>
+             </div>
+             <div class="list-view-pf-actions">
+               <button class="btn btn-primary" name="adminbtn" ng-click="getContracts()" ng-disabled="!isAdmin" data-toggle="tooltip" data-placement="left" title="Visible to admin role user">Call Admin service</button>
+             </div>
+             <div class="list-view-pf-main-info">
+              <div class="list-view-pf-left">
+                <span class="fa fa-linux list-view-pf-icon-sm"></span>
+              </div>
+              <div class="list-view-pf-body">
+                <div class="list-view-pf-description">
+                  <div class="list-group-item-heading">
+                    {{profile.username}}
+                  </div>
+                  <div class="list-group-item-text">
+                    <span class="pficon pficon-container-node"></span>
+                    Id : {{profile.id}}
+                  </div>
+                </div>
+                <div class="list-view-pf-additional-info">
+                  <div class="list-view-pf-additional-info-item">
+                    <span class="pficon pficon-screen"></span>
+                    Email: {{profile.email}}
+                  </div>
+                  <div class="list-view-pf-additional-info-item">
+                    <span class="pficon pficon-user"></span>
+                    Full Name: {{profile.firstName}} {{profile.lastName}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-inverse" ng-show="contracts">
+            <div class="panel-body">
+             <ul ng-repeat="contract in contracts">
+              <li>{{contract.name}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 </div>
+</div>
+

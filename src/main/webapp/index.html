@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>KeyCloak Demo using Angular</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="http://www.patternfly.org/components/jquery/dist/jquery.min.js"></script>
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <script src="//localhost:8180/auth/js/keycloak.js"></script>
         <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
@@ -16,11 +16,12 @@
         <script src="js/controllers.js"></script>
         <script src="js/routes.js"></script>
         <script src="js/services/contract.js"></script>
+        <script src="js/directives/header.js"></script>
         <link rel="stylesheet" href="bower_components/patternfly/dist/css/patternfly.min.css" />
         <link rel="stylesheet" href="bower_components/patternfly/dist/css/patternfly-additions.min.css" />
         <link rel="stylesheet" href="bower_components/angular-patternfly/dist/styles/angular-patternfly.min.css" />
     </head>
-    <body>
+    <body class="cards-pf">
     <div header></div>
 	<div ng-view></div>
     </body>
