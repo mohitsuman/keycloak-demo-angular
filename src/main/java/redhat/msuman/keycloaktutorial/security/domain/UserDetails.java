@@ -5,7 +5,7 @@ import java.util.Set;
 public class UserDetails {
 
 	private String id;
-	
+
 	private String email;
 
 	private String firstName;
@@ -13,7 +13,7 @@ public class UserDetails {
 	private String lastName;
 
 	private Set<String> roles;
-	
+
 	public UserDetails(String id, String firstName, String lastName, String email, Set<String> roles) {
 		this.id = id;
 		this.firstName = firstName;
