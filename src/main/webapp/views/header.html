@@ -1,0 +1,31 @@
+<nav class="navbar navbar-inverse navbar-pf-vertical" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" id="logo" href="#/">
+      <img class="navbar-brand-icon" src="imgs/logo.png" alt="Red Hat Logo" style="height: 35px;"/>
+    </a>
+  </div>
+  <div class="collapse navbar-collapse navbar-collapse-pf">
+    <ul class="nav navbar-nav navbar-right navbar-iconic">
+      <li>
+        <a href="#"></a>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle nav-item-iconic" data-toggle="dropdown">
+          <span class="pficon pficon-user"></span>
+          {{profile.username}} <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="#"><span class="pficon pficon-server"></span>&nbsp;Server Info</a></li>
+          <li class="divider"></li>
+          <li><a href="" ng-click="logout()"><span class="fa fa-sign-out"></span>&nbsp;Sign Out</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
